@@ -1,0 +1,3 @@
+module TorQML.Datasources
+TQCSVDataSource 0.1 TQCSVDataSource.qml
+TQLinearDataSource 0.1 TQLinearDataSource.qml

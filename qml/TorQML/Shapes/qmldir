@@ -1,0 +1,10 @@
+module TorQML.Shapes
+TQAxis 0.1 TQAxis.qml
+TQBox 0.1 TQBox.qml
+TQCone 0.1 TQCone.qml
+TQCoordinate 0.1 TQCoordinate.qml
+TQCylinder 0.1 TQCylinder.qml
+TQGrid 0.1 TQGrid.qml
+TQPrimitive 0.1 TQPrimitive.qml
+TQSphere 0.1 TQSphere.qml
+TQTorus 0.1 TQTorus.qml

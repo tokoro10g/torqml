@@ -1,0 +1,12 @@
+#!/usr/bin/ruby -Ku
+# -*- coding: utf-8 -*-
+
+begin
+  require 'torqml'
+rescue LoadError
+  require_relative '../lib/torqml'
+end
+
+TorQML::run
+
+# vim:set ts=2 sw=2 et:

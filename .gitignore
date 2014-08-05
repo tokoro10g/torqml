@@ -1,0 +1,32 @@
+# C++ objects and libs
+*.slo
+*.lo
+*.o
+*.a
+*.la
+*.lai
+*.so
+*.dll
+*.dylib
+*.bundle
+
+# Qt-es
+*.pro.user
+*.pro.user.*
+*.moc
+moc_*.cpp
+qrc_*.cpp
+Makefile
+*-build-*
+.qmake.stash
+*.autosave
+
+# YARD
+.yardoc
+doc
+
+# Rake
+pkg
+
+# exports
+examples/**/*.png

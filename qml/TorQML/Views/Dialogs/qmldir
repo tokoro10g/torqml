@@ -1,0 +1,3 @@
+module TorQML.Views.Dialogs
+TQCaptureDialog 0.1 TQCaptureDialog.qml
+TQProgressDialog 0.1 TQProgressDialog.qml

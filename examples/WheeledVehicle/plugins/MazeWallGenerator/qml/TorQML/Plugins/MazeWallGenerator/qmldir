@@ -1,0 +1,4 @@
+module TorQML.Plugins.MazeWallGenerator
+MazeHorizWall 0.1 MazeHorizWall.qml
+MazeVertWall 0.1 MazeVertWall.qml
+MazeWallGenerator 0.1 MazeWallGenerator.qml

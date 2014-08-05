@@ -1,0 +1,4 @@
+module TorQML.Views
+TQBasicView 0.1 TQBasicView.qml
+TQViewport 0.1 TQViewport.qml
+TQCamera 0.1 TQCamera.qml
