@@ -14,17 +14,17 @@ TQBasicView {
                 yWidth: 0.3
                 zDepth: 0.3
                 color: "blue"
-                transform: [
-                    Rotation3D { angle: 30; axis: "0,0,1" }
-                ]
+                transform: Transform {
+                    Rotate { angle: 30; axis: "0,0,1" }
+                }
                 TQBox {
                     xLength: 0.5
                     yWidth: 0.3
                     zDepth: 0.3
                     color: "green"
-                    transform: [
-                        Rotation3D { angle: 30; axis: "0,0,1" }
-                    ]
+                    transform: Transform {
+                        Rotate { angle: 30; axis: "0,0,1" }
+                    }
                 }
             }
         }

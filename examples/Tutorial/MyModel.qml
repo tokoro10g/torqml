@@ -15,17 +15,17 @@ TQModel {
             yWidth: 0.3
             zDepth: 0.3
             color: "blue"
-            transform: [
-                Rotation3D { id: _theta1; angle: 30; axis: "0,0,1" }
-            ]
+            transform: Transform {
+                Rotate { id: _theta1; angle: 30; axis: "0,0,1" }
+            }
             TQBox {
                 xLength: 0.5
                 yWidth: 0.3
                 zDepth: 0.3
                 color: "green"
-                transform: [
-                    Rotation3D { id: _theta2; angle: 30; axis: "0,0,1" }
-                ]
+                transform: Transform {
+                    Rotate { id: _theta2; angle: 30; axis: "0,0,1" }
+                }
             }
         }
     }

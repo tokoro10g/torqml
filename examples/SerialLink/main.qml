@@ -9,8 +9,8 @@ TQBasicView {
     id: controller
 
     camera: TQCamera {
-        center: "0,0,0"
-        eye: "0,0,7"
+        viewCenter: "0,0,0"
+        position: "0,0,7"
     }
 
     msPerFrame: 20

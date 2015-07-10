@@ -10,10 +10,10 @@ TQBasicView {
             xLength: 1.0
             yWidth: 0.3
             zDepth: 0.3
-            transform: [
-                Rotation3D { angle: 30; axis: "0,0,1" },
-                Translation3D { translate: "1,0,0" }
-            ]
+            transform: Transform {
+                Rotate { angle: 30; axis: "0,0,1" }
+                Translate { translation: "1,0,0" }
+            }
         }
     }
 }
