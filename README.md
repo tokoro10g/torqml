@@ -5,7 +5,6 @@ TorQML is a 3D visualization toolkit for numerical simulations.
 It provides an architecture for describing 3D structures in Qt Quick QML and enables you to animate the models with numerical data.
 
 TorQML is now under development.
-Stable release will be out after the official release of Qt3D (in Qt 5.5).
 
 ## Features
 
@@ -24,8 +23,7 @@ Stable release will be out after the official release of Qt3D (in Qt 5.5).
 ### Requirements
 
 * Git
-* Qt 5.2 or later
-* Qt3D for Qt 5
+* Qt 5.5 with Qt3D
 * Ruby 2.0.0 or later
 * [ruby-qml](https://github.com/seanchas116/ruby-qml/) \>= 1.0.0 and its dependencies
 
@@ -36,32 +34,30 @@ Not supporting Windows.
 
 #### Install Dependencies
 
-* Install Qt 5, Ruby and git
+* Install Ruby and git
+    * Ubuntu 14.04
+
+        ```sh
+        $ sudo apt-get install ruby ruby-dev git
+        ```
+
+* Install Qt 5.5  
+    Using official Qt Installer is usually a good idea to get the latest version of Qt.  
+    "Source Components" is required to use TorQML.  
+    ![Installer Options](https://github.com/tokoro10g/torqml/wiki/img/qtinstaller_options.png)
+    After that, execute the commands below to set the environment variables to use Qt 5.5. (the location of qmake depends on the installation path)
+
+    ```sh
+    $ sudo qtchooser -install opt55 /opt/Qt/5.5/gcc_64/bin/qmake
+    $ export $(sed -e 's/"//g' <<< $(QT_SELECT=opt55 qtchooser -print-env))
+    ```
+
 * Install ruby-qml (install its dependencies beforehand)
+    **Note: Make sure that the environment variables are set.**
 
     ```sh
     $ gem install qml
     ```
-
-* Install Qt3D
-    * Ubuntu 14.04
-
-        ```sh
-        $ sudo apt-get install qtdeclarative5-qt3d-plugin
-        ```
-
-    * Manual Build (for Qt 5.3 or later)
-
-        ```sh
-        $ git clone https://gitorious.org/qt/qt3d.git
-        $ cd qt3d
-        $ git checkout bdb98ba
-        $ qmake && make && make docs
-        $ sudo make install
-        $ sudo make install-docs
-        ```
-
-        Installing documentations is recommended.
 
 * Install build dependencies (for development)
 
@@ -70,6 +66,8 @@ Not supporting Windows.
    ```
 
 #### Install TorQML
+
+Before you continue, make sure that the environment variables are set.
 
 ```sh
 $ gem install torqml
@@ -104,11 +102,11 @@ TQModel {
       TQBox { // 2nd link
          xLength: 1.0; yWidth: 0.3; zDepth: 0.3
          color: "blue"
-         transform: [ Rotation3D { angle: 30; axis: "0,0,1" } ]
+         transform: Transform { Rotate { angle: 30; axis: "0,0,1" } }
          TQBox { // 3rd link
             xLength: 0.5; yWidth: 0.3; zDepth: 0.3
             color: "green"
-            transform: [ Rotation3D { angle: 30; axis: "0,0,1" } ]
+            transform: Transform { Rotate { angle: 30; axis: "0,0,1" } }
          }
       }
    }
@@ -117,7 +115,7 @@ TQModel {
 
 ### Visualize Data
 
-You can import numerical data from MATLAB Mat-File and CSV / TSV / SSV to create animations for your models.
+You can import numerical data from CSV / TSV / SSV to create animations for your models.
 
 ![Visualization](https://github.com/tokoro10g/torqml/wiki/img/viewer_main.png)
 
@@ -134,7 +132,7 @@ You can write your plugin in QML, Ruby, C++, and Javascript for your own advance
 * Implement mp4 capture mode
 * Design the interface for dynamic model parameter editing
 * Provide an example of running a simulation inside TorQML
-* Wait for a stable release of Qt3D (in near future), then write tests
+* Write tests
 
 ## Contributing
 
