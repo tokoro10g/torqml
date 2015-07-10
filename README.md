@@ -1,4 +1,4 @@
-TorQML
+TorQML [![Gem Version](https://badge.fury.io/rb/torqml.svg)](http://badge.fury.io/rb/torqml)
 ======
 
 TorQML is a 3D visualization toolkit for numerical simulations.
@@ -44,26 +44,20 @@ Not supporting Windows.
 * Install Qt 5.5  
     Using official Qt Installer is usually a good idea to get the latest version of Qt.  
     "Source Components" is required to use TorQML.  
-    ![Installer Options](https://github.com/tokoro10g/torqml/wiki/img/qtinstaller_options.png)
-    After that, execute the commands below to set the environment variables to use Qt 5.5. (the location of qmake depends on the installation path)
+    ![Installer Options](https://github.com/tokoro10g/torqml/wiki/img/qtinstaller_options.png)  
+    After that, execute the commands below to set the environment variables to use Qt 5.5 (the path of qmake depends on the installation location).
 
     ```sh
     $ sudo qtchooser -install opt55 /opt/Qt/5.5/gcc_64/bin/qmake
     $ export $(sed -e 's/"//g' <<< $(QT_SELECT=opt55 qtchooser -print-env))
     ```
 
-* Install ruby-qml (install its dependencies beforehand)
+* Install ruby-qml (install its dependencies beforehand)  
     **Note: Make sure that the environment variables are set.**
 
     ```sh
     $ gem install qml
     ```
-
-* Install build dependencies (for development)
-
-   ```sh
-   $ bundle install
-   ```
 
 #### Install TorQML
 
