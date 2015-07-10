@@ -1,9 +1,9 @@
 function updateFrame() {
     if(!_viewport) return; // viewport has not initialized yet
 
-    for(var i = 0; i < _viewport.children.length; i++){
-        if("dataSource" in _viewport.children[i])
-            _viewport.children[i].dataSource.currentFrame = _slider.value // update current frame
+    for(var i = 0; i < _viewport.models.length; i++){
+        if("dataSource" in _viewport.models[i])
+            _viewport.models[i].dataSource.currentFrame = _slider.value // update current frame
     }
     _slider.from = _slider.value;
     _frameText.text = Math.floor(_slider.value)
@@ -19,16 +19,17 @@ function restartTransition(value) {
 
 function reloadData() {
     var min = -1;
-    for(var i = 0; i < _viewport.children.length; i++){
-        if("dataSource" in _viewport.children[i]){
-            _viewport.children[i].dataSource.prepare_data();
-            var n = _viewport.children[i].dataSource.rows();
+    for(var i = 0; i < _viewport.models.length; i++){
+        if("dataSource" in _viewport.models[i]){
+            _viewport.models[i].dataSource.prepare_data();
+            var n = _viewport.models[i].dataSource.rows();
             // use minimum number as the maximum frame number
             if(min <= 0) min = n;
             else min = Math.min(min, n);
         }
     }
     // FIXME: what if `min` is still negative here?
+    console.log("Loaded " + min + " frames");
     numberOfFrames = min;
     _slider.value = 1;
 }
@@ -158,14 +159,15 @@ function initialize() {
 
     // to avoid pointing out of bound, use the least value of frame numbers as the number of frames
     var min = -1;
-    for(var i = 0; i < _viewport.children.length; i++){
-        if("dataSource" in _viewport.children[i]){
-            _viewport.children[i].dataSource.prepare_data();
-            var n = _viewport.children[i].dataSource.rows();
+    for(var i = 0; i < _viewport.models.length; i++){
+        if("dataSource" in _viewport.models[i]){
+            _viewport.models[i].dataSource.prepare_data();
+            var n = _viewport.models[i].dataSource.rows();
             if(min < 0) min = n;
             else min = Math.min(min, n);
         }
     }
+    console.log("Loaded " + min + " frames");
     numberOfFrames = min;
 }
 

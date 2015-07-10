@@ -1,16 +1,17 @@
 import QtQuick 2.0
-import QtQuick.Controls 1.1
+import QtQuick.Controls 1.4
 import QtQuick.Window 2.1
-import QtQuick.Layouts 1.1
-import QtQuick.Dialogs 1.1
+import QtQuick.Layouts 1.2
+import QtQuick.Dialogs 1.2
 import Qt3D 2.0
 import TorQML.DataSources 0.1
 import TorQML.FrameGrabber 0.1
 import TorQML.Views.Dialogs 0.1
 import "basicview.js" as BasicViewLogic
+import "mouseEventHandler.js" as MouseEventHandler
 
 ApplicationWindow {
-    property alias models: _viewport.children
+    property alias models: _viewport.models
     property alias numberOfFrames: _slider.maximumValue
     property alias msPerFrame: _timePerFrame.value
     property alias light: _viewport.light
@@ -29,12 +30,17 @@ ApplicationWindow {
         id: _menuBar
         Menu {
             title: "File"
-            MenuItem { text: "Open..." }
-            MenuItem { text: "Close" }
-        }
-        Menu {
-            title: "Tool"
-            MenuItem{ text: "hogehoge" }
+            MenuItem {
+                text: "Reload"
+                shortcut: "Ctrl+R"
+                onTriggered: BasicViewLogic.reloadData();
+            }
+            MenuSeparator { }
+            MenuItem {
+                text: "Exit"
+                shortcut: "Ctrl+W"
+                onTriggered: _window.close();
+            }
         }
     }
 
@@ -112,6 +118,30 @@ ApplicationWindow {
     TQViewport {
         id: _viewport;
         Keys.forwardTo: [_slider]
+    }
+    MouseArea {
+        id: _mouseArea
+        property bool rotating: false
+        property bool translating: false
+        property int startX: 0
+        property int startY: 0
+        property variant startPosition
+        property variant startViewCenter
+        property variant startUpVector
+        acceptedButtons: Qt.AllButtons
+        anchors.fill: parent
+        onPressed: {
+            MouseEventHandler.onPressed(mouse);
+        }
+        onReleased: {
+            MouseEventHandler.onReleased(mouse);
+        }
+        onPositionChanged: {
+            MouseEventHandler.onPositionChanged(mouse);
+        }
+        onWheel: {
+            MouseEventHandler.onWheel(wheel);
+        }
     }
 
     FrameGrabber { id: _frameGrabber }
