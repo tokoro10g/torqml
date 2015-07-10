@@ -3,7 +3,7 @@ import Qt3D 2.0
 import TorQML.Plugins.MazeWallGenerator 0.1
 import "wallAllocator.js" as WallAllocator
 
-Item {
+Entity {
     property alias source: _generator.source
     MazeWallGenerator_ {
         id: _generator
@@ -18,6 +18,9 @@ Item {
     Component {
         id: _horizwall
         MazeHorizWall{}
+    }
+    Entity {
+        id: walls
     }
 }
 

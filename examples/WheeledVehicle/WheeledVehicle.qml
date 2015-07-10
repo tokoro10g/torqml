@@ -12,10 +12,9 @@ TQModel {
     TQGrid{
         step: 180
         size: 1800
-        x: 180*8
-        y: 180*8
+        position: Qt.vector3d(180*8, 180*8, 0);
     }
-    Item3D {
+    Entity {
         TQBox {
             xLength: 60
             yWidth: 90
@@ -28,30 +27,30 @@ TQModel {
             length: 11
             centered: true
             color: "red"
-            transform: [
-                Translation3D { translate: "30,-20,0" }
-            ]
+            transform: Transform {
+                Translate { translation: "30,-20,0" }
+            }
         }
         TQCylinder {
             radius: 12
             length: 11
             centered: true
             color: "red"
-            transform: [
-                Translation3D { translate: "-30,-20,0" }
-            ]
+            transform: Transform {
+                Translate { translation: "-30,-20,0" }
+            }
         }
-        transform: [
-            Rotation3D {
+        components: Transform {
+            Rotate {
                 id: _theta
                 angle: 0
                 axis: "0,0,1"
-            },
-            Translation3D {
-                id: _body
-                translate: Qt.vector3d(tx, ty, 0)
             }
-        ]
+            Translate {
+                id: _body
+                translation: Qt.vector3d(tx, ty, 0)
+            }
+        }
     }
 
     MazeWallGenerator{

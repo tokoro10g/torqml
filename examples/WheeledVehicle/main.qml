@@ -2,19 +2,20 @@ import QtQuick 2.0
 import QtQuick.Controls 1.1
 import QtQuick.Window 2.1
 import Qt3D 2.0
+import Qt3D.Renderer 2.0
 import TorQML.DataSources 0.1
 import TorQML.Views 0.1
 
 TQBasicView {
     id: controller
 
-    light: Light {
+    light: PointLight {
         position: "0,0,5000"
-        ambientColor: "white"
+        color: "white"
     }
     camera: TQCamera {
-        center: Qt.vector3d(8 * 180, 8 * 180, 0)
-        eye: Qt.vector3d(8 * 180, 8 * 180, 6000)
+        viewCenter: Qt.vector3d(8 * 180, 8 * 180, 0)
+        position: Qt.vector3d(8 * 180, 8 * 180, 6000)
         farPlane: 1000000
         nearPlane: 5
     }

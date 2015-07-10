@@ -1,9 +1,10 @@
 import QtQuick 2.0
 import Qt3D 2.0
-import Qt3D.Shapes 2.0
 import TorQML.Shapes 0.1
 
-Item3D {
+Entity {
+    property real x : 0
+    property real y : 0
     TQBox {
         xLength: 180
         yWidth: 12
@@ -17,13 +18,13 @@ Item3D {
         zDepth: 2
         centered: true
         color: "red"
-        transform: [
-            Translation3D { translate: "0,0,24" }
-        ]
+        transform: Transform {
+            Translate { translation: "0,0,24" }
+        }
     }
-    transform: [
-        Translation3D { translate: "0,0,25" }
-    ]
+    components: Transform {
+        Translate { translation: Qt.vector3d(x,y,25) }
+    }
 }
 
 // vim:set ts=4 sw=4 et:
