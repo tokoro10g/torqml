@@ -1,9 +1,9 @@
 import QtQuick 2.0
 import Qt3D 2.0
-import Qt3D.Shapes 2.0
-import TorQML.Shapes 0.1
+import Qt3D.Renderer 2.0
+//import TorQML.Shapes 0.1
 
-Item3D {
+Entity {
     id: _obj
     property real cylinderRadius: 0.1
     property real cylinderLength: 0.7

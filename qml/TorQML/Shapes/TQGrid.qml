@@ -1,14 +1,15 @@
 import QtQuick 2.0
 import Qt3D 2.0
-import Qt3D.Shapes 2.0
-import TorQML.Shapes 0.1
+import Qt3D.Renderer 2.0
+//import TorQML.Shapes 1.0
 
-Item3D {
+Entity {
     id: _obj
     property real step: 1.0
     property real size: 10
+    property var position: "0,0,0"
     property string color: "#33FFFFFF"
-    Repeater {
+    NodeInstantiator {
         model: _obj.size / _obj.step * 2 + 1
         delegate: TQCylinder {
             radius: _obj.step / 20
@@ -18,18 +19,21 @@ Item3D {
             color: _obj.color
         }
     }
-    Repeater {
+    NodeInstantiator {
         model: _obj.size / _obj.step * 2 + 1
         delegate: TQCylinder {
             radius: _obj.step / 20
             length: _obj.size * 2
             centered: true
             position: Qt.vector3d(_obj.step * index - _obj.size, 0, 0)
-            transform: [
-                Rotation3D { angle: 90; axis: "0,0,1" }
-            ]
+            transform: Transform {
+                Rotate { angle: 90; axis: "0,0,1" }
+            }
             color: _obj.color
         }
+    }
+    components: Transform { 
+        Translate { translation: position }
     }
 }
 

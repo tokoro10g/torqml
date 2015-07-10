@@ -1,9 +1,9 @@
 import QtQuick 2.0
 import Qt3D 2.0
-import Qt3D.Shapes 2.0
-import TorQML.Shapes 0.1
+import Qt3D.Renderer 2.0
+//import TorQML.Shapes 1.0
 
-Item3D {
+Entity {
     property alias xColor: xAxis.color
     property alias yColor: yAxis.color
     property alias zColor: zAxis.color
@@ -14,16 +14,16 @@ Item3D {
     TQAxis {
         id: yAxis
         color: "green"
-        transform: [
-            Rotation3D { angle: 90; axis: "0,0,1" }
-        ]
+        transform: Transform {
+            Rotate { angle: 90; axis: "0,0,1" }
+        }
     }
     TQAxis {
         id: zAxis
         color: "blue"
-        transform: [
-            Rotation3D { angle: -90; axis: "0,1,0" }
-        ]
+        transform: Transform {
+            Rotate { angle: -90; axis: "0,1,0" }
+        }
     }
 }
 

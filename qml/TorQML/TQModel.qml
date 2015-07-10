@@ -1,7 +1,8 @@
 import QtQuick 2.0
+import Qt3D 2.0
 
 // root component for user-defined models
-Item {
+Entity {
     id: objroot
     property var dataSource: null
 }
